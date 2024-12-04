@@ -21,8 +21,7 @@ def get_weather_data(city_name: str):
     try:
         location_key = get_location_key(city_name)
         if location_key == None:
-            #error(error_message='Не удалось получить ключ города')
-            return 'Error, key: city'
+            return 'Ошибка: не удалось получить ключ города'
         else:
             weather_url = f'http://dataservice.accuweather.com/forecasts/v1/hourly/1hour/{location_key}?apikey={API_KEY}&details=true&metric=true'
             weather_response = requests.get(weather_url)
@@ -39,8 +38,7 @@ def get_weather_data(city_name: str):
                     'cloud_cover': data['CloudCover']
                 }
             else:
-                #error(error_message='Не удалось получить данные о погоде')
-                return 'Error, key: weather'
+                return 'Ошибка: не удалось получить данные о погоде'
     except Exception as e:
         return f'Error, key: {e}'
 
@@ -125,10 +123,10 @@ def weather_model(city_name: str):
         elif bad_weather_coef >= 2:
             data['message'] = 'Удовлетворительные уловия для путешествия'
         else:
-            data['message'] = 'Благоприятные условия для путешестивя'
+            data['message'] = 'Благоприятные условия для путешествия'
 
     except Exception as e:
-        pass
+        return data
 
     return data
 

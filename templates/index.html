@@ -123,8 +123,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>Погода на Вашем Маршруте</h1>
-        <form action="/check-weather" method="post">
+        <h1>Погода на Вашем маршруте</h1>
+        <form action="/result" method="post">
             <div class="input-group">
                 <i class="fas fa-street-view icon"></i>
                 <input type="text" class="form-control" id="start-city" name="start_city" placeholder="Начальный город" required>
@@ -133,7 +133,7 @@
                 <i class="fas fa-map-marker icon"></i>
                 <input type="text" class="form-control" id="end-city" name="end_city" placeholder="Конечный город" required>
             </div>
-            <button type="submit" class="btn btn-primary">Проверить Погоду</button>
+            <button type="submit" class="btn btn-primary">Узнать погоду</button>
         </form>
     </div>
 </body>
