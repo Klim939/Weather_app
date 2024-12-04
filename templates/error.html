@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ошибка - Прогноз Погоды</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('https://i.pinimg.com/originals/c8/b8/63/c8b863d7d50e05c695a83651b3d9d178.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            backdrop-filter: blur(1px);
+        }
+
+        .container {
+            background-color: rgba(ff, f8, e8, 0.5);
+            padding: 40px;
+            border-radius: 60px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 25px;
+            font-size: 32px;
+            font-weight: bold;
+            text-shadow: 0 0 30px rgba(200, 100, 100, 1);
+        }
+
+        .error-text {
+            background-color: rgba(255, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(255, 82, 82, 0.3);
+            color: #ffffff;
+            font-size: 18px;
+            line-height: 1.6;
+            font-weight: bold;
+        }
+
+        .error-text i {
+            color: #ff5252;
+            font-size: 22px;
+            margin-right: 10px;
+        }
+
+        .back-button {
+            display: inline-block;
+            width: 100%;
+            padding: 15px;
+            background-color: #ff5252;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 18px;
+            transition: background-color 0.3s ease, transform 0.3s;
+            box-shadow: 0 10px 20px rgba(255, 82, 82, 0.4);
+            margin-top: 30px;
+        }
+
+        .back-button:hover {
+            background-color: #e53935;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(229, 57, 53, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .error-text {
+                font-size: 16px;
+            }
+
+            .back-button {
+                font-size: 16px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1><i class="fas fa-exclamation-triangle"></i> ERROR</h1>
+        <div class="error-text">
+            <p>{{ error_message }}</p>
+        </div>
+        <a href="/" class="back-button">Вернуться назад</a>
+    </div>
+</body>
+
+</html>

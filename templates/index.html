@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Узнать погоду на маршруте</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('https://i.pinimg.com/originals/c8/b8/63/c8b863d7d50e05c695a83651b3d9d178.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            backdrop-filter: blur(1px);
+        }
+
+        .container {
+            background-color: rgba(ff, f8, e8, 0.5);
+            padding: 40px;
+            border-radius: 60px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .container:hover {
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 25px;
+            font-size: 32px;
+            font-weight: bold;
+            text-shadow: 0 0 30px rgba(200, 100, 100, 1);
+        }
+
+        .form-control {
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 20px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.3);
+            outline: none;
+            box-shadow: 0 0 10px rgba(253, 214, 146, 0.6);
+        }
+
+        .form-control::placeholder {
+            color: #cfd8dc;
+            font-style: italic;
+        }
+
+        .btn-primary {
+            background-color: #fcd581;
+            color: #000000;
+            border: none;
+            width: 100%;
+            padding: 15px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.3s;
+            box-shadow: 0 10px 20px rgba(253, 214, 146, 0.6);
+        }
+
+        .btn-primary:hover {
+            background-color: #d52941;
+            transform: translateY(-5px);
+            color: white;
+            box-shadow: 0 15px 30px rgba(153, 13, 53, 0.8);
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-group .icon {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            color: #fcd581;
+            font-size: 20px;
+        }
+
+        .form-control {
+            padding-left: 45px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .form-control,
+            .btn-primary {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Погода на Вашем Маршруте</h1>
+        <form action="/check-weather" method="post">
+            <div class="input-group">
+                <i class="fas fa-street-view icon"></i>
+                <input type="text" class="form-control" id="start-city" name="start_city" placeholder="Начальный город" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-map-marker icon"></i>
+                <input type="text" class="form-control" id="end-city" name="end_city" placeholder="Конечный город" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Проверить Погоду</button>
+        </form>
+    </div>
+</body>
+
+</html>
