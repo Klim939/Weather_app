@@ -27,7 +27,7 @@
             border-radius: 60px;
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
             width: 100%;
-            max-width: 600px;
+            max-width: 1200px;
             text-align: center;
             transition: all 0.3s ease;
         }
@@ -37,147 +37,86 @@
             margin-bottom: 25px;
             font-size: 32px;
             font-weight: bold;
-            text-shadow: 0 0 30px rgba(200, 100, 100, 1);
+            text-shadow: 0 0 30px rgba(253, 214, 146, 0.6);
         }
-
+        .details-table{
+        color: #ffffff;
+        }
         .weather-result {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 20px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+        }
+        .details-table th, .details-table td {
+            padding: 10px;
+            text-align: center;
+        }
+        h2 {
+            color: #ffffff;
             margin-bottom: 20px;
-            box-shadow: 0 0 15px rgba(253, 214, 146, 0.6);
+            font-size: 2rem;
+            text-align: center;
         }
 
-        .weather-result h2 {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #fcd581;
-            text-shadow: 0 0 5px rgba(253, 214, 146, 0.6);
-        }
-
-        .weather-result p {
-            font-size: 18px;
-        }
-
-        .beneficial {
-            color: #fcd581;
-            font-weight: bold;
-            font-size: 1.4em;
-        }
-
-        .unfavorable {
-            color: #fcd581;
-            font-weight: bold;
-            font-size: 1.4em;
-        }
-
-        .details {
-            margin-top: 10px;
-            text-align: left;
-            padding-left: 10px;
-            border-left: 4px solid #fcd581;
-            line-height: 1.6;
-            font-size: 16px;
-        }
-
-        .details p {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .details p i {
-            margin-right: 10px;
-            color: #fcd581;
-        }
-
-        .back-button {
-            display: inline-block;
+        .back-button, .dash-button {
+            background-color: #fcd581;
+            color: #000000;
+            border: none;
             width: 100%;
             padding: 15px;
-            background-color: #fcd581;
-            color: black;
-            font-weight: bold;
-            text-decoration: none;
             border-radius: 50px;
-            text-align: center;
             font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
             transition: background-color 0.3s ease, transform 0.3s;
             box-shadow: 0 10px 20px rgba(253, 214, 146, 0.6);
-        }
-
-        .back-button:hover {
-            background-color: #d52941;
-            transform: translateY(-5px);
-            color: white;
-            box-shadow: 0 15px 30px rgba(153, 13, 53, 0.8);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 30px;
-            }
-
-            h1 {
-                font-size: 22px;
-            }
-
-            .weather-result h2 {
-                font-size: 20px;
-            }
-
-            .details {
-                font-size: 14px;
-            }
-
-            .back-button {
-                font-size: 16px;
-                padding: 10px;
-            }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Погода на маршруте</h1>
-        <div class="weather-result">
-            <h2>Начальная точка: {{ start_city }}</h2>
-            <p class="text-center {{ start_condition_class }}">
-                <i class="fas fa-street-view icon"></i> {{ start_condition }}
-            </p>
-            <div class="details">
-                <p><i class="fas fa-thermometer-half"></i> Реальная температура: <span>{{ start_r_temperature }}°C</span></p>
-                <p><i class="fas fa-thermometer-three-quarters"></i> Ощущаемая температура: <span>{{ start_f_temperature }}°C</span></p>
-                <p><i class="fas fa-wind"></i> Скорость ветра: <span>{{ start_wind_speed }} м/с</span></p>
-                <p><i class="fas fa-location-arrow"></i> Напраление ветра: <span>{{ start_direction }}</span></p>
-                <p><i class="fas fa-tint"></i> Влажность: <span>{{ start_humidity }}%</span></p>
-                <p><i class="fas fa-cloud-sun-rain"></i> Вероятность осадков: <span>{{ start_precib_prob }}%</span></p>
-                <p><i class="fas fa-water"></i> Количество осадков: <span>{{ start_liquid }} мм</span></p>
-                <p><i class="fas fa-cloud"></i> Облачность: <span>{{ start_cloud_cover }}%</span></p>
-            </div>
-        </div>
+<div class="container">
+<h1>Результаты Погодных Условий на Маршруте (Прогноз на {{ days }} дней)</h1>
 
+        <!-- Прогноз для каждого города -->
+        {% for city_data in forecast_data %}
         <div class="weather-result">
-            <h2>Конечная точка: {{ end_city }}</h2>
-            <p class="text-center {{ end_condition_class }}">
-                <i class="fas fa-map-marker icon"></i> {{ end_condition }}
-            </p>
-            <div class="details">
-                <p><i class="fas fa-thermometer-half"></i> Реальная температура: <span>{{ end_r_temperature }}°C</span></p>
-                <p><i class="fas fa-thermometer-three-quarters"></i> Ощущаемая температура: <span>{{ end_f_temperature }}°C</span></p>
-                <p><i class="fas fa-wind"></i> Скорость ветра: <span>{{ end_wind_speed }} м/с</span></p>
-                <p><i class="fas fa-location-arrow"></i> Напраление ветра: <span>{{ end_direction }}</span></p>
-                <p><i class="fas fa-tint"></i> Влажность: <span>{{ end_humidity }}%</span></p>
-                <p><i class="fas fa-cloud-sun-rain"></i> Вероятность осадков: <span>{{ end_precib_prob }}%</span></p>
-                <p><i class="fas fa-water"></i> Количество осадков: <span>{{ end_liquid }} мм</span></p>
-                <p><i class="fas fa-cloud"></i> Облачность: <span>{{ end_cloud_cover }}%</span></p>
-            </div>
-        </div>
+            <h2 class="text-center">Прогноз для {{ city_data.city }}</h2>
 
+            <table class="table table-bordered details-table">
+                <thead>
+                    <tr>
+                        <th>Дата</th>
+                        <th>Реальная температура</th>
+                        <th>Ощущающаяся температура</th>
+                        <th>Скорость ветра</th>
+                        <th>Направление ветра</th>
+                        <th>Влажность</th>
+                        <th>Вероятность осадков</th>
+                        <th>Количество осадков</th>
+                        <th>Облачность</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for day in city_data.forecasts %}
+                    <tr>
+                        <td>{{ day.date }}</td>
+                        <td>{{ day.temperature.real }}°C</td>
+                        <td>{{ day.temperature.feel }}°C</td>
+                        <td>{{ day.wind.speed }} км/ч</td>
+                        <td>{{ day.wind.direction }}</td>
+                        <td>{{ day.humidity }}%</td>
+                        <td>{{ day.precip_prob }}</td>
+                        <td>{{ day.total_liq }}mm</td>
+                        <td>{{ day.cloud_cover }}%</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endfor %}
         <a href="/" class="back-button">На главную</a>
-    </div>
+</div>>
 </body>
 
 </html>
